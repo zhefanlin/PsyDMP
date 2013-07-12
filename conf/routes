@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+GET		/segments					controllers.Application.segments()
+GET		/segments/top=n				controllers.Application.segmentsTopN()
+GET		/households/[segmentName]/count?floor=s					controllers.Application.SegnameNumHouseScore()
+GET		/households/[ipAddress]/segments?top=n					controllers.Application.IPSegnameScoreMore()
+GET		/households/[ipAddress]/segments?bottom=n					controllers.Application.IPSegnameScoreless()
