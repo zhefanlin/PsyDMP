@@ -1,23 +1,15 @@
 package controllers;
 
 import java.sql.SQLException;
-
 import org.json.JSONException;
-
 import models.*;
-import play.*;
 import play.mvc.*;
-import views.html.*;
-import play.core.Router.Param;
-import play.data.*;
 
 public class Application extends Controller {
 
-	// static Form<ShowData> taskForm = form(ShowData.class);
-
 	public static Result index() {
 		return ok("PsyDMP project");
-	}
+	}// Home Page
 
 	public static Result segments() throws SQLException, JSONException {
 		return ok(ShowData.showSegments());
@@ -28,20 +20,21 @@ public class Application extends Controller {
 	}// returns top segment Names and number, descending values, limited
 		// (default=10)
 
-	public static Result segnameNumHouseScore(String segmentName, double s) throws SQLException,
-			JSONException {
+	public static Result segnameNumHouseScore(String segmentName, double s)
+			throws SQLException, JSONException {
 		return ok(ShowData.showNumScore(segmentName, s));
 	}// returns households number in segment which score >= floor (s)
 
 	public static Result ipSegnameScoreMore(String IPAddress, int n)
 			throws SQLException, JSONException {
 		return ok(ShowData.showIPMore(IPAddress, n));
+	}// returns all segment Names and scores
+		// in which the household corresponding to the IP address given has score >= 0.5 in descending order of score
+		//limited by maximum specified in top parameter, top parameter is optional with default value = 10
 
-	}
-
-	public static Result ipSegnameScoreLess(String IPAddress, int n) throws SQLException,
-			JSONException {
-
+	public static Result ipSegnameScoreLess(String IPAddress, int n)
+			throws SQLException, JSONException {
 		return ok(ShowData.showIPLess(IPAddress, n));
-	}
+	}//returns all segment Names and scores
+	  //in which the household corresponding to the IP address given has score < 0.5 in descending order of score
 }

@@ -5,17 +5,22 @@
 # Home page
 GET     /                           controllers.Application.index()
 
+# All segments information Page
 GET		/segments					controllers.Application.segments()
 
+# Show Top N segments with default=10
 GET		/segments/top=:n				controllers.Application.segmentsTopN(n: Integer)
 GET     /segments/top				controllers.Application.segmentsTopN(n: Integer ?= 10)
 
+# Show number of household with score > s for specic input segmentName 
 GET		/households/:segmentName/count/floor=:s     controllers.Application.segnameNumHouseScore(segmentName: String, s: Double)
 GET		/households/:segmentName/count/floor		controllers.Application.segnameNumHouseScore(segmentName: String, s: Double  ?=0.1)
 
+# Show Top N segmentName with scores for a specific input IPAddress
 GET		/households/:IPAddress/segments/top=:n     controllers.Application.ipSegnameScoreMore(IPAddress: String, n: Integer)
 GET		/households/:IPAddress/segments/top     controllers.Application.ipSegnameScoreMore(IPAddress: String, n: Integer ?=10)
 
+# Show Bottom N segmentName with scores for a specific input IPAddress
 GET		/households/:IPAddress/segments/bottom=:n     controllers.Application.ipSegnameScoreLess(IPAddress: String, n: Integer)
 GET		/households/:IPAddress/segments/bottom     controllers.Application.ipSegnameScoreMore(IPAddress: String, n: Integer ?=10)
 
