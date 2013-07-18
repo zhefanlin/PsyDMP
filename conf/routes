@@ -22,7 +22,7 @@ GET		/households/:IPAddress/segments/top     controllers.Application.ipSegnameSc
 
 # Show Bottom N segmentName with scores for a specific input IPAddress
 GET		/households/:IPAddress/segments/bottom=:n     controllers.Application.ipSegnameScoreLess(IPAddress: String, n: Integer)
-GET		/households/:IPAddress/segments/bottom     controllers.Application.ipSegnameScoreMore(IPAddress: String, n: Integer ?=10)
+GET		/households/:IPAddress/segments/bottom     controllers.Application.ipSegnameScoreLess(IPAddress: String, n: Integer ?=10)
 
 
 # Map static resources from the /public folder to the /assets URL path
